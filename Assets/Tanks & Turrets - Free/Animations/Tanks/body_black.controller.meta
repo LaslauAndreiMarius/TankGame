@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 66252798b3a474eb2a38bf04dcdcfbd3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 216890
+  packageName: Tanks & Turrets - FREE
+  packageVersion: 1.0
+  assetPath: Assets/Tanks & Turrets - Free/Animations/Tanks/body_black.controller
+  uploadId: 567895

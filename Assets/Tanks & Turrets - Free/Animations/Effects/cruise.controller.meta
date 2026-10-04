@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a90f6d8d927234dd0abb25ae78c64f81
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 216890
+  packageName: Tanks & Turrets - FREE
+  packageVersion: 1.0
+  assetPath: Assets/Tanks & Turrets - Free/Animations/Effects/cruise.controller
+  uploadId: 567895
