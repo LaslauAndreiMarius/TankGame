@@ -27,15 +27,22 @@ public class Health : MonoBehaviour
             Die();
     }
 
-    void Die()
+void Die()
+{
+    isDead = true;
+
+    // Tell the GameManager who died
+    if (GameManager.Instance != null)
     {
-        isDead = true;
-
-        if (deathEffect != null)
-            Instantiate(deathEffect, transform.position, Quaternion.identity);
-
-        Sfx.Play(deathSound, transform.position);
-
-        Destroy(gameObject);
+        if (CompareTag("Player")) GameManager.Instance.PlayerDied();
+        else if (CompareTag("Enemy")) GameManager.Instance.AddKill();
     }
+
+    if (deathEffect != null)
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+
+    Sfx.Play(deathSound, transform.position);
+
+    Destroy(gameObject);
+}
 }

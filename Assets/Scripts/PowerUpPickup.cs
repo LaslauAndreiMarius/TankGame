@@ -30,9 +30,9 @@ public class PowerUpPickup : MonoBehaviour
     {
         switch (t)
         {
-            case PowerUpType.DoubleDamage: return Color.yellow;
-            case PowerUpType.DoubleArmor:  return new Color(0.3f, 0.6f, 1f);   // blue
-            default:                       return new Color(0.8f, 0.4f, 1f);   // purple (speed)
+            case PowerUpType.DoubleDamage: return Color.darkRed;
+            case PowerUpType.DoubleArmor:  return Color.darkBlue;   // blue
+            default:                       return Color.yellow;   // purple (speed)
         }
     }
 
