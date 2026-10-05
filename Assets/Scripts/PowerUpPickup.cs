@@ -8,7 +8,8 @@ public class PowerUpPickup : MonoBehaviour
 
     public PowerUpType type;
     public float lifetime = 40f;   // disappears if nobody takes it
-
+    public AudioClip pickupSound;
+    
     void OnEnable()  { All.Add(this); }
     void OnDisable() { All.Remove(this); }
 
@@ -41,6 +42,7 @@ public class PowerUpPickup : MonoBehaviour
         if (receiver == null) return;   // not a tank (a wall, for example)
 
         receiver.Activate(type);
+        Sfx.Play(pickupSound, transform.position);
         Destroy(gameObject);
     }
 }

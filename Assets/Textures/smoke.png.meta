@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 379361293a2374408be99678795e0071
+AssetOrigin:
+  serializedVersion: 1
+  productId: 216890
+  packageName: Tanks & Turrets - FREE
+  packageVersion: 1.0
+  assetPath: Assets/Tanks & Turrets - Free/Sprites/projectiles/smoke.png
+  uploadId: 567895
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -84,7 +91,7 @@ TextureImporter:
       213: -5547171620207211648
     second: smoke_sprite_sheet_14
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -101,11 +108,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -114,7 +122,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -133,7 +141,9 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationMethod: 0
   spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -144,9 +154,10 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 1
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -156,9 +167,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -168,9 +180,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -180,9 +193,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -192,10 +206,11 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
+  - serializedVersion: 4
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -204,13 +219,27 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: smoke_sprite_sheet_0
+      name: smoke_0
       rect:
         serializedVersion: 2
         x: 0
@@ -218,20 +247,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbc0fd85383782b20800000000000000
-      internalID: 3109862550668250299
+      spriteID: d72f962d93fec314c9767d7d262ddb59
+      internalID: -775832402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_1
+      name: smoke_1
       rect:
         serializedVersion: 2
         x: 80
@@ -239,20 +269,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8d3888bc82cc35e0800000000000000
-      internalID: -1928452630774268531
+      spriteID: b33e9f83cb63e854d9fb0b9df0c16e47
+      internalID: 1595895997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_2
+      name: smoke_2
       rect:
         serializedVersion: 2
         x: 160
@@ -260,20 +291,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e126ad62f2a474f0800000000000000
-      internalID: -831860869051309597
+      spriteID: c0a13d28f39b06d4781c282907af51ed
+      internalID: -1568031440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_3
+      name: smoke_3
       rect:
         serializedVersion: 2
         x: 0
@@ -281,20 +313,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fd256655c0d8bcb0800000000000000
-      internalID: -4847895452887732751
+      spriteID: f04960dd7ff586c419dc7eb81218bce1
+      internalID: 808757136
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_4
+      name: smoke_4
       rect:
         serializedVersion: 2
         x: 80
@@ -302,20 +335,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a522e0cc5d04cf030800000000000000
-      internalID: 3529767494947316314
+      spriteID: 26d297e251a550641a2b136ef318f602
+      internalID: -152805339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_5
+      name: smoke_5
       rect:
         serializedVersion: 2
         x: 160
@@ -323,20 +357,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fb9356bd436d1690800000000000000
-      internalID: -7629833008273187850
+      spriteID: 93fb7c648a35d9041befb671508c21d2
+      internalID: 554082173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_6
+      name: smoke_6
       rect:
         serializedVersion: 2
         x: 0
@@ -344,20 +379,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89c412c06dfacfb70800000000000000
-      internalID: 850106608973092342
+      spriteID: 494179636e49beb4eba56656676e5eb2
+      internalID: 164850946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_7
+      name: smoke_7
       rect:
         serializedVersion: 2
         x: 80
@@ -365,20 +401,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69ca242df0b8379f0800000000000000
-      internalID: -6569648518330858412
+      spriteID: afdef1baedd2bd54cbabbfa76421df5e
+      internalID: 494513542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_8
+      name: smoke_8
       rect:
         serializedVersion: 2
         x: 160
@@ -386,20 +423,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e6f6a844ee1b65f0800000000000000
-      internalID: 7797697305439537927
+      spriteID: 96d253cfc38ca1b479af898c5223bd4a
+      internalID: 706108671
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_9
+      name: smoke_9
       rect:
         serializedVersion: 2
         x: 0
@@ -407,20 +445,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc203a6f6f5411cb0800000000000000
-      internalID: 7780953720765388412
+      spriteID: 6abe18cf6561fa144a4f210e79e43528
+      internalID: 492060379
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_10
+      name: smoke_10
       rect:
         serializedVersion: 2
         x: 80
@@ -428,20 +467,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: afc0ad5a03b849d30800000000000000
-      internalID: 569096499034068590
+      spriteID: fe09cb2cb31baee408edb3d22841c692
+      internalID: -2096605606
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_11
+      name: smoke_11
       rect:
         serializedVersion: 2
         x: 160
@@ -449,20 +489,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b23a39927a3b3aea0800000000000000
-      internalID: -6852060980020717717
+      spriteID: 73c6863868f487943ae8c87680eac980
+      internalID: -1474562614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_12
+      name: smoke_12
       rect:
         serializedVersion: 2
         x: 0
@@ -470,20 +511,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5207e89588f276f50800000000000000
-      internalID: 2218420401518224628
+      spriteID: a29f2adf0fae9ec41a0f447e4e825366
+      internalID: 800507627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_13
+      name: smoke_13
       rect:
         serializedVersion: 2
         x: 80
@@ -491,20 +533,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da0364e27b63bb6e0800000000000000
-      internalID: 3537774305963712459
+      spriteID: b74646ead28cd9a4286662af5be6b3fb
+      internalID: 447414141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: smoke_sprite_sheet_14
+      name: smoke_14
       rect:
         serializedVersion: 2
         x: 160
@@ -512,19 +555,21 @@ TextureImporter:
         width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08bcb653dcc7403b0800000000000000
-      internalID: -4024266764126116404
+      spriteID: 9156206668fb0a742a59b8763af9b262
+      internalID: -1156984158
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -534,32 +579,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":80.0,"y":80.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      smoke_sprite_sheet_5: -7629833008273187850
-      smoke_sprite_sheet_6: 850106608973092342
-      smoke_sprite_sheet_14: -4024266764126116404
-      smoke_sprite_sheet_9: 7780953720765388412
-      smoke_sprite_sheet_13: 3537774305963712459
-      smoke_sprite_sheet_8: 7797697305439537927
-      smoke_sprite_sheet_10: 569096499034068590
-      smoke_sprite_sheet_0: 3109862550668250299
-      smoke_sprite_sheet_7: -6569648518330858412
-      smoke_sprite_sheet_12: 2218420401518224628
-      smoke_sprite_sheet_2: -831860869051309597
-      smoke_sprite_sheet_3: -4847895452887732751
-      smoke_sprite_sheet_11: -6852060980020717717
-      smoke_sprite_sheet_1: -1928452630774268531
-      smoke_sprite_sheet_4: 3529767494947316314
-  spritePackingTag: 
+      smoke_0: -775832402
+      smoke_1: 1595895997
+      smoke_10: -2096605606
+      smoke_11: -1474562614
+      smoke_12: 800507627
+      smoke_13: 447414141
+      smoke_14: -1156984158
+      smoke_2: -1568031440
+      smoke_3: 808757136
+      smoke_4: -152805339
+      smoke_5: 554082173
+      smoke_6: 164850946
+      smoke_7: 494513542
+      smoke_8: 706108671
+      smoke_9: 492060379
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 216890
-  packageName: Tanks & Turrets - FREE
-  packageVersion: 1.0
-  assetPath: Assets/Tanks & Turrets - Free/Sprites/projectiles/smoke.png
-  uploadId: 567895

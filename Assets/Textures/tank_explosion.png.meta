@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: 78f892559938140469b4503a7e080878
+AssetOrigin:
+  serializedVersion: 1
+  productId: 216890
+  packageName: Tanks & Turrets - FREE
+  packageVersion: 1.0
+  assetPath: Assets/Tanks & Turrets - Free/Sprites/projectiles/tank_explosion.png
+  uploadId: 567895
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -129,7 +136,7 @@ TextureImporter:
       213: 2851898651835959549
     second: explosion_atlas_2048_300x276_41
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -146,11 +153,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -159,7 +167,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -178,7 +186,9 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
+  spriteTessellationMethod: 0
   spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -189,9 +199,10 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 1
   platformSettings:
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -201,9 +212,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -213,10 +225,11 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
+  - serializedVersion: 4
+    buildTarget: iOS
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -225,9 +238,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -237,9 +251,10 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
+  - serializedVersion: 4
     buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -249,768 +264,951 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_0
+      name: tank_explosion_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1772
+        y: 1767
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1a5aec74184818a0800000000000000
-      internalID: -6334233623064323556
+      spriteID: 85bc0f50acb317e4d926cee945eb322d
+      internalID: -1145730433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_1
+      name: tank_explosion_1
       rect:
         serializedVersion: 2
         x: 300
-        y: 1772
+        y: 1767
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d94b2c5ed3673c790800000000000000
-      internalID: -7511029745304030051
+      spriteID: e93126241f73b4340b67c122e1b408be
+      internalID: 1559077601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_2
+      name: tank_explosion_2
       rect:
         serializedVersion: 2
-        x: 600
-        y: 1772
+        x: 604
+        y: 1767
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 153d336d1fd4a0380800000000000000
-      internalID: -9004298803897707695
+      spriteID: c2f0e5a0423d07f44a85c34ba750e6fa
+      internalID: -1271272554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_3
+      name: tank_explosion_3
       rect:
         serializedVersion: 2
         x: 900
-        y: 1772
+        y: 1767
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86938d367c9896170800000000000000
-      internalID: 8172214488307087720
+      spriteID: 53785a9773b1eaa4badcb6eea3deccb4
+      internalID: -693336037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_4
+      name: tank_explosion_4
       rect:
         serializedVersion: 2
         x: 1200
-        y: 1772
+        y: 1767
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c98cd3853b1a8d190800000000000000
-      internalID: -7937416551588837220
+      spriteID: ce7bf7934105a8048b3b0d83d126da0a
+      internalID: 204307373
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_5
+      name: tank_explosion_5
       rect:
         serializedVersion: 2
         x: 1500
-        y: 1772
+        y: 1767
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 978c736c0823f3ab0800000000000000
-      internalID: -5026243130459436935
+      spriteID: 860b23f5dd18cbd4c9bdefee5d39af08
+      internalID: 66110844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_6
+      name: tank_explosion_6
       rect:
         serializedVersion: 2
         x: 0
-        y: 1496
+        y: 1486
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce8e83d3533722c50800000000000000
-      internalID: 6638995473195133164
+      spriteID: 42eefa63dea428e49910d33269918c83
+      internalID: 1213925722
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_7
+      name: tank_explosion_7
       rect:
         serializedVersion: 2
         x: 300
-        y: 1496
+        y: 1486
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82946489221e97ba0800000000000000
-      internalID: -6090589482342004440
+      spriteID: a4ad7743619f44c4fa3a596ed915180b
+      internalID: -1916637582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_8
+      name: tank_explosion_8
       rect:
         serializedVersion: 2
         x: 600
-        y: 1496
+        y: 1486
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b595aac907326d1d0800000000000000
-      internalID: -3326432308194813605
+      spriteID: 00bb553790a66a04c8c8a4eae002917e
+      internalID: -1807153749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_9
+      name: tank_explosion_9
       rect:
         serializedVersion: 2
         x: 900
-        y: 1496
+        y: 1486
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33e8ad523772f6070800000000000000
-      internalID: 8101737630172614195
+      spriteID: 39382ac24ed14e544badffbef5761bea
+      internalID: 1789296440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_10
+      name: tank_explosion_10
       rect:
         serializedVersion: 2
         x: 1200
-        y: 1496
+        y: 1486
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6408bd9f4e9e74d40800000000000000
-      internalID: 5568676633920634950
+      spriteID: 67cd5f5831848b9419de09f69416e2f2
+      internalID: 1465356401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_11
+      name: tank_explosion_11
       rect:
         serializedVersion: 2
         x: 1500
-        y: 1496
+        y: 1486
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2b4b2d9851778500800000000000000
-      internalID: 398411717453499181
+      spriteID: 0e543d0b74e134f4d94b5df88ceb7452
+      internalID: -857038746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_12
+      name: tank_explosion_12
       rect:
         serializedVersion: 2
         x: 0
-        y: 1220
+        y: 1205
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ed511ef4735d35c0800000000000000
-      internalID: -4234136312714535456
+      spriteID: ef2d8abf32e2f76458a5880814201c97
+      internalID: 1636480117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_13
+      name: tank_explosion_13
       rect:
         serializedVersion: 2
-        x: 300
-        y: 1220
+        x: 293
+        y: 1205
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd083a20cc07b4060800000000000000
-      internalID: 6938763672414290143
+      spriteID: 15fe566326376d2418d39cbca9a7dd63
+      internalID: -922087216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_14
+      name: tank_explosion_14
       rect:
         serializedVersion: 2
         x: 600
-        y: 1220
+        y: 1205
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9092847fd11c4fb90800000000000000
-      internalID: -7208924769066407671
+      spriteID: 73a1e0043bb7eae4d9aa716786455987
+      internalID: -890043991
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_15
+      name: tank_explosion_15
       rect:
         serializedVersion: 2
         x: 900
-        y: 1220
+        y: 1205
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ab0996c9073ea440800000000000000
-      internalID: 4948953555652905894
+      spriteID: 6d1ce4d0b42c2464c9d4ae8f27fba6af
+      internalID: 1014350299
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_16
+      name: tank_explosion_16
       rect:
         serializedVersion: 2
         x: 1200
-        y: 1220
+        y: 1205
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c1dc425d00a95ac0800000000000000
-      internalID: -3865882826045075006
+      spriteID: 142ff48fed8b5db4eb19d4ee6e0813cd
+      internalID: -1887348397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_17
+      name: tank_explosion_17
       rect:
         serializedVersion: 2
         x: 1500
-        y: 1220
+        y: 1205
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f6460d26047ac390800000000000000
-      internalID: -7797292234964580621
+      spriteID: 1f7e9debe9cd564449654202e8dd572f
+      internalID: -967899463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_18
+      name: tank_explosion_18
       rect:
         serializedVersion: 2
         x: 0
-        y: 944
+        y: 924
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52e653f77749de540800000000000000
-      internalID: 5038846799053680165
+      spriteID: 5aabc6c0ae7d86c41b3ec520b733810b
+      internalID: 215032285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_19
+      name: tank_explosion_19
       rect:
         serializedVersion: 2
         x: 300
-        y: 944
+        y: 924
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f71abed89820b01e0800000000000000
-      internalID: -2230686400617143937
+      spriteID: 927137728098cb34bbbc23045772e254
+      internalID: 566988463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_20
+      name: tank_explosion_20
       rect:
         serializedVersion: 2
         x: 600
-        y: 944
+        y: 924
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3f4f1bd8cbff7c40800000000000000
-      internalID: 5512401309013069626
+      spriteID: a554bb5dd4eb1b84d9f065f9dfe6ed52
+      internalID: -1447880181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_21
+      name: tank_explosion_21
       rect:
         serializedVersion: 2
         x: 900
-        y: 944
+        y: 924
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22178686720731890800000000000000
-      internalID: -7488518440829292254
+      spriteID: 67094590be2d9cc458b4e19387835e43
+      internalID: 1073199740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_22
+      name: tank_explosion_22
       rect:
         serializedVersion: 2
         x: 1200
-        y: 944
+        y: 924
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ada879d7cbaea200800000000000000
-      internalID: 193280708858916258
+      spriteID: c97018d16ffb4c74dbc2b279deb610ff
+      internalID: 1601323598
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_23
+      name: tank_explosion_23
       rect:
         serializedVersion: 2
         x: 1500
-        y: 944
+        y: 924
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15e3034f3e99870f0800000000000000
-      internalID: -1118975303068139951
+      spriteID: 3b550cdf1cc9a60439f1bb9ba2a7355e
+      internalID: -958480445
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_24
+      name: tank_explosion_24
       rect:
         serializedVersion: 2
         x: 0
-        y: 668
+        y: 643
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0df7025c97f209660800000000000000
-      internalID: 7390459188559773648
+      spriteID: 3cccbababb0e8774cb35e737a5f507a5
+      internalID: -1765987318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_25
+      name: tank_explosion_25
       rect:
         serializedVersion: 2
         x: 300
-        y: 668
+        y: 643
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57d566f30d13741d0800000000000000
-      internalID: -3366667425949524619
+      spriteID: 7cb92a5bdb66d034c957c3f74bd7cbcd
+      internalID: -1840510082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_26
+      name: tank_explosion_26
       rect:
         serializedVersion: 2
         x: 600
-        y: 668
+        y: 643
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2490ebf2bd90745e0800000000000000
-      internalID: -1925559478674126526
+      spriteID: 353f7a68afbaa19458e9608d52646427
+      internalID: 275865817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_27
+      name: tank_explosion_27
       rect:
         serializedVersion: 2
         x: 900
-        y: 668
+        y: 643
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 309c2f2b079fd7d70800000000000000
-      internalID: 9042657889263732995
+      spriteID: 4df7a6dce8877cd4cb8abc64de051705
+      internalID: 1195888779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_28
+      name: tank_explosion_28
       rect:
         serializedVersion: 2
         x: 1200
-        y: 668
+        y: 643
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bb16413bcec24740800000000000000
-      internalID: 5134893897256147896
+      spriteID: 6a26c0415b92d9b4faf87bbe800fab8b
+      internalID: 1578624120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_29
+      name: tank_explosion_29
       rect:
         serializedVersion: 2
         x: 1500
-        y: 668
+        y: 643
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1ae75ed1b67e88b0800000000000000
-      internalID: -5148046817726305766
+      spriteID: 05e72e5c44ba20a4f851150d53e69f8b
+      internalID: -1030481158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_30
+      name: tank_explosion_30
       rect:
         serializedVersion: 2
         x: 0
-        y: 392
+        y: 362
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6372436f4856ce100800000000000000
-      internalID: 138597310282344246
+      spriteID: c4c3f1abc0dca56498cf96460fbafb20
+      internalID: -265221323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_31
+      name: tank_explosion_31
       rect:
         serializedVersion: 2
         x: 300
-        y: 392
+        y: 362
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e1508e33210a0ea0800000000000000
-      internalID: -5905906710458904090
+      spriteID: ef281c5d0fbcffb4d9b103de5d2ea69c
+      internalID: -1031116046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_32
+      name: tank_explosion_32
       rect:
         serializedVersion: 2
         x: 600
-        y: 392
+        y: 362
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b2a162357fd8d1920800000000000000
-      internalID: 2962680223271098923
+      spriteID: 3d41c1aa0c8afe2419dd7dbb0a83e190
+      internalID: 425670002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_33
+      name: tank_explosion_33
       rect:
         serializedVersion: 2
         x: 900
-        y: 392
+        y: 362
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f2888c8ff4e31920800000000000000
-      internalID: 2959961166338097911
+      spriteID: 1473bcdc15ec3fe40953bd88ab8dd410
+      internalID: 677804022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_34
+      name: tank_explosion_34
       rect:
         serializedVersion: 2
         x: 1200
-        y: 392
+        y: 362
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fc7ebf149e8b12b0800000000000000
-      internalID: -5612735743748309769
+      spriteID: eb5ad4daf98c3d246ba4d85a12529112
+      internalID: -1571585770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: explosion_atlas_2048_300x276_35
+      name: tank_explosion_35
       rect:
         serializedVersion: 2
         x: 1500
-        y: 392
+        y: 362
         width: 300
-        height: 276
+        height: 281
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 49366c52050e3d680800000000000000
-      internalID: -8731388617705495660
+      spriteID: 076f7aa1726c7f14c94d083e87afb8c5
+      internalID: 1987701939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank_explosion_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 81
+        width: 300
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 163f71a92bbde594c96dfa5524e88c70
+      internalID: 1545062849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank_explosion_37
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 81
+        width: 300
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc10dd63084e13e4a8a239dbe2c75a76
+      internalID: -1006812803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank_explosion_38
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 81
+        width: 300
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b973398ee91dc498e87987d4839b7a
+      internalID: 309655871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank_explosion_39
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 81
+        width: 300
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a1d253be05cfb4418062a59ae0d412c
+      internalID: 1377541511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank_explosion_40
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 81
+        width: 300
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5d40059c4dc8aa46ac74f07dcd138d9
+      internalID: -1438010458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank_explosion_41
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 81
+        width: 300
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46612afc8a6bd5b4088d88b4eb7c33cd
+      internalID: -1210286302
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
@@ -1020,59 +1218,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":300.0,"y":281.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      explosion_atlas_2048_300x276_33: 2959961166338097911
-      explosion_atlas_2048_300x276_12: -4234136312714535456
-      explosion_atlas_2048_300x276_39: -4741796954759250769
-      explosion_atlas_2048_300x276_10: 5568676633920634950
-      explosion_atlas_2048_300x276_22: 193280708858916258
-      explosion_atlas_2048_300x276_3: 8172214488307087720
-      explosion_atlas_2048_300x276_25: -3366667425949524619
-      explosion_atlas_2048_300x276_24: 7390459188559773648
-      explosion_atlas_2048_300x276_35: -8731388617705495660
-      explosion_atlas_2048_300x276_38: -9054549955272115068
-      explosion_atlas_2048_300x276_1: -7511029745304030051
-      explosion_atlas_2048_300x276_18: 5038846799053680165
-      explosion_atlas_2048_300x276_27: 9042657889263732995
-      explosion_atlas_2048_300x276_4: -7937416551588837220
-      explosion_atlas_2048_300x276_14: -7208924769066407671
-      explosion_atlas_2048_300x276_17: -7797292234964580621
-      explosion_atlas_2048_300x276_5: -5026243130459436935
-      explosion_atlas_2048_300x276_20: 5512401309013069626
-      explosion_atlas_2048_300x276_30: 138597310282344246
-      explosion_atlas_2048_300x276_26: -1925559478674126526
-      explosion_atlas_2048_300x276_32: 2962680223271098923
-      explosion_atlas_2048_300x276_7: -6090589482342004440
-      explosion_atlas_2048_300x276_19: -2230686400617143937
-      explosion_atlas_2048_300x276_29: -5148046817726305766
-      explosion_atlas_2048_300x276_2: -9004298803897707695
-      explosion_atlas_2048_300x276_31: -5905906710458904090
-      explosion_atlas_2048_300x276_40: -4203818526484550736
-      explosion_atlas_2048_300x276_0: -6334233623064323556
-      explosion_atlas_2048_300x276_11: 398411717453499181
-      explosion_atlas_2048_300x276_13: 6938763672414290143
-      explosion_atlas_2048_300x276_16: -3865882826045075006
-      explosion_atlas_2048_300x276_23: -1118975303068139951
-      explosion_atlas_2048_300x276_21: -7488518440829292254
-      explosion_atlas_2048_300x276_8: -3326432308194813605
-      explosion_atlas_2048_300x276_28: 5134893897256147896
-      explosion_atlas_2048_300x276_37: -3115641436899638125
-      explosion_atlas_2048_300x276_9: 8101737630172614195
-      explosion_atlas_2048_300x276_6: 6638995473195133164
-      explosion_atlas_2048_300x276_41: 2851898651835959549
-      explosion_atlas_2048_300x276_34: -5612735743748309769
-      explosion_atlas_2048_300x276_15: 4948953555652905894
-      explosion_atlas_2048_300x276_36: -614628339926983327
-  spritePackingTag: 
+      tank_explosion_0: -1145730433
+      tank_explosion_1: 1559077601
+      tank_explosion_10: 1465356401
+      tank_explosion_11: -857038746
+      tank_explosion_12: 1636480117
+      tank_explosion_13: -922087216
+      tank_explosion_14: -890043991
+      tank_explosion_15: 1014350299
+      tank_explosion_16: -1887348397
+      tank_explosion_17: -967899463
+      tank_explosion_18: 215032285
+      tank_explosion_19: 566988463
+      tank_explosion_2: -1271272554
+      tank_explosion_20: -1447880181
+      tank_explosion_21: 1073199740
+      tank_explosion_22: 1601323598
+      tank_explosion_23: -958480445
+      tank_explosion_24: -1765987318
+      tank_explosion_25: -1840510082
+      tank_explosion_26: 275865817
+      tank_explosion_27: 1195888779
+      tank_explosion_28: 1578624120
+      tank_explosion_29: -1030481158
+      tank_explosion_3: -693336037
+      tank_explosion_30: -265221323
+      tank_explosion_31: -1031116046
+      tank_explosion_32: 425670002
+      tank_explosion_33: 677804022
+      tank_explosion_34: -1571585770
+      tank_explosion_35: 1987701939
+      tank_explosion_36: 1545062849
+      tank_explosion_37: -1006812803
+      tank_explosion_38: 309655871
+      tank_explosion_39: 1377541511
+      tank_explosion_4: 204307373
+      tank_explosion_40: -1438010458
+      tank_explosion_41: -1210286302
+      tank_explosion_5: 66110844
+      tank_explosion_6: 1213925722
+      tank_explosion_7: -1916637582
+      tank_explosion_8: -1807153749
+      tank_explosion_9: 1789296440
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 216890
-  packageName: Tanks & Turrets - FREE
-  packageVersion: 1.0
-  assetPath: Assets/Tanks & Turrets - Free/Sprites/projectiles/tank_explosion.png
-  uploadId: 567895
