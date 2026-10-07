@@ -284,7 +284,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7873394566145068713, guid: 8b114f74def17ac4095c48434dc9084c, type: 3}
   firePoint: {fileID: 554890227066771660}
   fireRate: 1.2
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 19c6b3a2348702f42ad6b70ba66f7c29, type: 3}
   damageMultiplier: 1
 --- !u!114 &8161139600968621035
 MonoBehaviour:
@@ -301,7 +301,7 @@ MonoBehaviour:
   damageTakenMultiplier: 1
   maxHealth: 30
   deathEffect: {fileID: 7270944498403713237, guid: 26b8bec4b2fb780408e530027dd3a772, type: 3}
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 7af04955525e08746addaaba178a3ce2, type: 3}
 --- !u!114 &2772482296133370703
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -48,6 +48,6 @@ public class PowerUpReceiver : MonoBehaviour
 
         float speed = IsActive(PowerUpType.DoubleSpeed) ? 2f : 1f;
         if (playerMove != null) playerMove.speedMultiplier = speed;
-        //if (enemyAI != null) enemyAI.speedMultiplier = speed;
+        if (enemyAI != null) enemyAI.speedMultiplier = speed;
     }
 }

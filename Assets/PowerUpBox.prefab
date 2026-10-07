@@ -154,3 +154,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpPickup
   type: 0
   lifetime: 40
+  pickupSound: {fileID: 8300000, guid: 77869372c6c5e8945bd6687fb39d8919, type: 3}

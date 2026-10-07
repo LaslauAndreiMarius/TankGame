@@ -7,9 +7,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;   // lets other scripts call GameManager.Instance
 
-    public TextMeshProUGUI killsText;     // the "Kills: 0" counter
-    public TextMeshProUGUI deathText;     // the "YOU DIED" message (hidden until you die)
-    public float restartDelay = 3f;       // seconds before the map reloads
+    [Header("HUD")]
+    public TextMeshProUGUI killsText;     // the number next to the skull icon
+    public UIPunch killsPunch;            // optional: makes the number "pop" on every kill
+
+    [Header("Death screen")]
+    public GameObject deathPanel;         // dark overlay + "YOU DIED" box (hidden until you die)
+    public TextMeshProUGUI deathText;
+    public float restartDelay = 3f;       // seconds until the map reloads
+    public float deathFadeTime = 0.5f;
 
     private int kills = 0;
     private bool playerDead = false;
@@ -17,12 +23,14 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        Time.timeScale = 1f;   // safety: never start a map frozen
+        Time.timeScale = 1f;   // never start a map frozen
     }
 
     void Start()
     {
-        if (deathText != null) deathText.gameObject.SetActive(false);
+        if (deathPanel != null) deathPanel.SetActive(false);
+        else if (deathText != null) deathText.gameObject.SetActive(false);
+
         UpdateUI();
     }
 
@@ -31,6 +39,7 @@ public class GameManager : MonoBehaviour
         if (playerDead) return;   // kills after you die don't count
         kills++;
         UpdateUI();
+        if (killsPunch != null) killsPunch.Punch();
     }
 
     public void PlayerDied()
@@ -43,20 +52,36 @@ public class GameManager : MonoBehaviour
     IEnumerator RestartAfterDelay()
     {
         if (deathText != null)
+            deathText.text = "YOU DIED\n<size=48><color=#F2E6C0>Kills: " + kills + "</color></size>";
+
+        float elapsed = 0f;
+
+        if (deathPanel != null)
         {
-            deathText.text = "YOU DIED\nKills: " + kills;
+            deathPanel.SetActive(true);
+            CanvasGroup group = deathPanel.GetComponent<CanvasGroup>();
+
+            while (group != null && elapsed < deathFadeTime)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                group.alpha = Mathf.Clamp01(elapsed / deathFadeTime);
+                yield return null;
+            }
+            if (group != null) group.alpha = 1f;
+        }
+        else if (deathText != null)
+        {
             deathText.gameObject.SetActive(true);
         }
 
-        // Realtime wait, so it still works if time is ever frozen
-        yield return new WaitForSecondsRealtime(restartDelay);
+        yield return new WaitForSecondsRealtime(Mathf.Max(0f, restartDelay - elapsed));
 
-        // Reloading the scene recreates everything, so the kills counter returns to 0
+        // Reloading the scene recreates everything, so the kill counter returns to 0
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     void UpdateUI()
     {
-        if (killsText != null) killsText.text = "Kills: " + kills;
+        if (killsText != null) killsText.text = kills.ToString();
     }
 }
