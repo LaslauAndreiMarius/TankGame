@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.982, y: -2.16197, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -138,7 +138,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
 --- !u!114 &2808671590548099833
 MonoBehaviour:
@@ -154,4 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpPickup
   type: 0
   lifetime: 40
-  pickupSound: {fileID: 8300000, guid: 77869372c6c5e8945bd6687fb39d8919, type: 3}
+  blinkTime: 6
+  damageBox: {fileID: 21300000, guid: 056f56a211781f3428738da6b4b21152, type: 3}
+  armorBox: {fileID: 21300000, guid: 9f0ebecd993dd7b4d8ff297221721014, type: 3}
+  speedBox: {fileID: 21300000, guid: 78dbf8177122f7e4a9ebef4bbe4d94ab, type: 3}
+  pickupSound: {fileID: 8300000, guid: f2d8a1b0a6c74ff44a1a8e5baa98b96b, type: 3}
