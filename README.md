@@ -6,7 +6,7 @@ Drive your tank, aim the turret with the mouse, survive waves of enemy tanks tha
 > University project · Work in progress · **Status: Week 1 demo**
 
 [Main menu]
-image.png
+![alt text](image-1.png)
 
 ---
 
