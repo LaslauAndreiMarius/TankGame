@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79866eb34bb6f0a4dac11416adec9b28, type: 3}
+  m_Name: Turret_V1
+  m_EditorClassIdentifier: Assembly-CSharp::TurretV1
+  sprite: {fileID: 21300000, guid: a79fa96e5a9115a449b784d0d856cc37, type: 3}
+  bulletSprite: {fileID: 21300000, guid: 3fd8cbf0f31b3a8468516ffa76c32a89, type: 3}
