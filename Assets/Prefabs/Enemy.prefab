@@ -327,6 +327,13 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0
+  usePathfinding: 1
+  repathInterval: 0.4
+  waypointReach: 0.6
+  goalMoveThreshold: 1.5
+  separationRadius: 2
+  separationWeight: 0.8
+  drawPath: 0
 --- !u!114 &-8217515148426044790
 MonoBehaviour:
   m_ObjectHideFlags: 0
