@@ -7,6 +7,9 @@ public class Health : MonoBehaviour
     public GameObject deathEffect;
     public AudioClip deathSound;
 
+    [Header("Rewards")]
+    public int coinReward = 10;   // coins an enemy drops when it dies
+
     private int currentHealth;
     private bool isDead = false;
 
@@ -41,6 +44,9 @@ public class Health : MonoBehaviour
             if (CompareTag("Player")) GameManager.Instance.PlayerDied();
             else if (CompareTag("Enemy")) GameManager.Instance.AddKill();
         }
+
+        // Enemies leave coins behind that the player can drive over
+        if (CompareTag("Enemy")) CoinPickup.Drop(transform.position, coinReward);
 
         if (deathEffect != null)
             Instantiate(deathEffect, transform.position, Quaternion.identity);
