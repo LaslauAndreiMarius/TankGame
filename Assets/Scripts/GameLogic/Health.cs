@@ -23,6 +23,13 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    // Used when a tank is given its real health after it was created (Mayhem enemies)
+    public void SetMaxHealth(int value)
+    {
+        maxHealth = Mathf.Max(1, value);
+        currentHealth = maxHealth;
+    }
+
     public void TakeDamage(int amount)
     {
         if (isDead) return;   // two bullets in the same frame must not kill it twice

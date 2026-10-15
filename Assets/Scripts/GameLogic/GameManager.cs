@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 3f;       // seconds until the map reloads
     public float deathFadeTime = 0.5f;
 
+    // An extra line for the death screen. Mayhem puts the wave you reached here.
+    [HideInInspector] public string deathSummary = "";
+
     private int kills = 0;
     private bool playerDead = false;
 
@@ -52,7 +55,10 @@ public class GameManager : MonoBehaviour
     IEnumerator RestartAfterDelay()
     {
         if (deathText != null)
-            deathText.text = "YOU DIED\n<size=48><color=#F2E6C0>Kills: " + kills + "</color></size>";
+        {
+            string summary = string.IsNullOrEmpty(deathSummary) ? "" : "\n" + deathSummary;
+            deathText.text = "YOU DIED\n<size=48><color=#F2E6C0>Kills: " + kills + summary + "</color></size>";
+        }
 
         float elapsed = 0f;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Put this on the Player. When a map starts it dresses the tank in the hull and turret chosen in the
+// When a map starts it dresses the tank in the hull and turret chosen in the
 // garage and applies their stats (speed, turning, health, damage, fire rate...).
 // It runs before the other scripts so the health and weapon already have the right numbers.
 [DefaultExecutionOrder(-200)]
