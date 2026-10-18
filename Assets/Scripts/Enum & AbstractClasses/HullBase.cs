@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // Base class for every hull. Each hull type is a small subclass that only fills in its own numbers
-// (see HullKV1.cs for an example). The sprite is assigned by Tools > Tank Game > Setup Garage Assets.
+// The sprite is assigned by Tools > Tank Game > Setup Garage Assets.
 public abstract class HullBase : ScriptableObject
 {
     public Sprite sprite;

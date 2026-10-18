@@ -13,7 +13,7 @@ public class TankLoadout : MonoBehaviour
 
         if (hull == null || turret == null)
         {
-            Debug.LogWarning("TankLoadout: no tank parts found. Run Tools > Tank Game > Setup Garage Assets. The tank keeps its old look.");
+            Debug.LogWarning("TankLoadout: no tank parts found. The tank keeps its old look.");
             return;
         }
         Apply(hull, turret);

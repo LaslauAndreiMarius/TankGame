@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-// The garage screen: pick a hull and a turret, see how they look and what they can do,
-// buy new parts with coins and equip them. Everything is built by Tools > Tank Game > Build Garage UI.
+// The garage screen: pick a hull, a turret and an augment, see how the tank looks and what it can do,
+// buy new parts with coins and equip them. Built by Tools > Tank Game > Build Garage UI,
+// and extended with the AUGMENTS tab by Tools > Tank Game > Add Augments Tab To Garage.
 [RequireComponent(typeof(CanvasGroup))]
 public class GarageUI : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class GarageUI : MonoBehaviour
             value.text = valueText;
         }
     }
+
+    private enum Tab { Hulls, Turrets, Augments }
 
     [Header("Header")]
     public TextMeshProUGUI coinsText;
@@ -61,15 +64,24 @@ public class GarageUI : MonoBehaviour
     public TextMeshProUGUI actionLabel;
     public TextMeshProUGUI messageText;
 
-    private static readonly Color Cream = new Color32(0xF2, 0xE6, 0xC0, 255);
+    [Header("Augments (added by Add Augments Tab To Garage)")]
+    public Button augmentTabButton;
+    public Image augmentTabImage;
+    public GameObject statsRoot;            // the hull / turret stats panel
+    public GameObject augmentInfoRoot;      // shown instead of the stats while the AUGMENTS tab is open
+    public TextMeshProUGUI augmentName;
+    public TextMeshProUGUI augmentDescription;
+    public TextMeshProUGUI augmentDetails;
+
     private static readonly Color ActiveTab = new Color32(0xFF, 0xC8, 0x80, 255);
     private static readonly Color InactiveTab = new Color32(0xB0, 0xB0, 0xB0, 255);
 
     private CanvasGroup group;
     private bool wasVisible;
-    private bool showingTurrets;
+    private Tab tab = Tab.Hulls;
     private HullBase selectedHull;
     private TurretBase selectedTurret;
+    private AugmentBase selectedAugment;
     private readonly List<GarageCard> cards = new List<GarageCard>();
     private float turretAngle;
 
@@ -78,13 +90,23 @@ public class GarageUI : MonoBehaviour
         group = GetComponent<CanvasGroup>();
         if (cardTemplate != null) cardTemplate.gameObject.SetActive(false);
 
-        hullTabButton.onClick.AddListener(() => ShowTab(false));
-        turretTabButton.onClick.AddListener(() => ShowTab(true));
+        hullTabButton.onClick.AddListener(() => ShowTab(Tab.Hulls));
+        turretTabButton.onClick.AddListener(() => ShowTab(Tab.Turrets));
+        if (augmentTabButton != null) augmentTabButton.onClick.AddListener(() => ShowTab(Tab.Augments));
         actionButton.onClick.AddListener(OnAction);
     }
 
-    void OnEnable()  { PlayerProfile.Changed += OnProfileChanged; }
-    void OnDisable() { PlayerProfile.Changed -= OnProfileChanged; }
+    void OnEnable()
+    {
+        PlayerProfile.Changed += OnProfileChanged;
+        AugmentProfile.Changed += OnProfileChanged;
+    }
+
+    void OnDisable()
+    {
+        PlayerProfile.Changed -= OnProfileChanged;
+        AugmentProfile.Changed -= OnProfileChanged;
+    }
 
     void OnProfileChanged()
     {
@@ -114,17 +136,23 @@ public class GarageUI : MonoBehaviour
 
         selectedHull = PlayerProfile.EquippedHull ?? TankCatalog.StarterHull;
         selectedTurret = PlayerProfile.EquippedTurret ?? TankCatalog.StarterTurret;
-        showingTurrets = false;
+        selectedAugment = AugmentProfile.Equipped ?? FirstAugment();
+        tab = Tab.Hulls;
         messageText.text = "";
 
         RebuildCards();
         RefreshAll();
     }
 
-    void ShowTab(bool turrets)
+    static AugmentBase FirstAugment()
+    {
+        return AugmentCatalog.All.Count > 0 ? AugmentCatalog.All[0] : null;
+    }
+
+    void ShowTab(Tab newTab)
     {
         if (selectedHull == null) return;
-        showingTurrets = turrets;
+        tab = newTab;
         messageText.text = "";
         RebuildCards();
         RefreshAll();
@@ -144,6 +172,13 @@ public class GarageUI : MonoBehaviour
         RefreshAll();
     }
 
+    void SelectAugment(AugmentBase augment)
+    {
+        selectedAugment = augment;
+        messageText.text = "";
+        RefreshAll();
+    }
+
     // ------------------------------------------------------------------
     //  Cards
     // ------------------------------------------------------------------
@@ -157,13 +192,23 @@ public class GarageUI : MonoBehaviour
         }
         cards.Clear();
 
-        if (showingTurrets)
+        if (tab == Tab.Turrets)
         {
             foreach (TurretBase t in TankCatalog.Turrets)
             {
                 TurretBase turret = t;   // a copy for the click handler below
                 GarageCard card = NewCard();
                 card.button.onClick.AddListener(() => SelectTurret(turret));
+                cards.Add(card);
+            }
+        }
+        else if (tab == Tab.Augments)
+        {
+            foreach (AugmentBase a in AugmentCatalog.All)
+            {
+                AugmentBase augment = a;
+                GarageCard card = NewCard();
+                card.button.onClick.AddListener(() => SelectAugment(augment));
                 cards.Add(card);
             }
         }
@@ -190,13 +235,22 @@ public class GarageUI : MonoBehaviour
     {
         int coins = PlayerProfile.Coins;
 
-        if (showingTurrets)
+        if (tab == Tab.Turrets)
         {
             for (int i = 0; i < cards.Count; i++)
             {
                 TurretBase t = TankCatalog.Turrets[i];
                 cards[i].Show(t.DisplayName, t.sprite, PlayerProfile.OwnsTurret(t.Id),
                     t == PlayerProfile.EquippedTurret, t == selectedTurret, t.Price, coins >= t.Price);
+            }
+        }
+        else if (tab == Tab.Augments)
+        {
+            for (int i = 0; i < cards.Count; i++)
+            {
+                AugmentBase a = AugmentCatalog.All[i];
+                cards[i].Show(a.CardName, a.icon, AugmentProfile.Owns(a.Id),
+                    a == AugmentProfile.Equipped, a == selectedAugment, a.Price, coins >= a.Price);
             }
         }
         else
@@ -218,8 +272,9 @@ public class GarageUI : MonoBehaviour
         if (selectedHull == null || selectedTurret == null) return;
 
         coinsText.text = PlayerProfile.Coins.ToString();
-        hullTabImage.color = showingTurrets ? InactiveTab : ActiveTab;
-        turretTabImage.color = showingTurrets ? ActiveTab : InactiveTab;
+        hullTabImage.color = tab == Tab.Hulls ? ActiveTab : InactiveTab;
+        turretTabImage.color = tab == Tab.Turrets ? ActiveTab : InactiveTab;
+        if (augmentTabImage != null) augmentTabImage.color = tab == Tab.Augments ? ActiveTab : InactiveTab;
 
         RefreshCards();
         RefreshPreview();
@@ -271,6 +326,17 @@ public class GarageUI : MonoBehaviour
 
     void RefreshStats()
     {
+        // The AUGMENTS tab swaps the stats panel for a description of the selected augment
+        bool augments = tab == Tab.Augments && augmentInfoRoot != null && statsRoot != null;
+        if (statsRoot != null) statsRoot.SetActive(!augments);
+        if (augmentInfoRoot != null) augmentInfoRoot.SetActive(augments);
+
+        if (augments)
+        {
+            RefreshAugmentInfo();
+            return;
+        }
+
         HullBase h = selectedHull;
         TurretBase t = selectedTurret;
         HullBase eh = PlayerProfile.EquippedHull ?? h;       // what you are using now (for the +/- comparison)
@@ -291,6 +357,22 @@ public class GarageUI : MonoBehaviour
         bulletIcon.sprite = t.bulletSprite;
         bulletIcon.enabled = t.bulletSprite != null;
         bulletName.text = t.BulletTypeName;
+    }
+
+    void RefreshAugmentInfo()
+    {
+        AugmentBase a = selectedAugment;
+        if (a == null)
+        {
+            augmentName.text = "NO AUGMENTS";
+            augmentDescription.text = "Run Tools > Tank Game > Setup Augments.";
+            augmentDetails.text = "";
+            return;
+        }
+
+        augmentName.text = a.DisplayName.ToUpper() + "  " + StateTag(AugmentProfile.Owns(a.Id), a == AugmentProfile.Equipped, a.Price);
+        augmentDescription.text = a.Description;
+        augmentDetails.text = a.Details;
     }
 
     static string StateTag(bool owned, bool equipped, int price)
@@ -322,7 +404,19 @@ public class GarageUI : MonoBehaviour
         bool owned, equipped;
         int price;
 
-        if (showingTurrets)
+        if (tab == Tab.Augments)
+        {
+            if (selectedAugment == null)
+            {
+                actionButton.interactable = false;
+                actionLabel.text = "-";
+                return;
+            }
+            owned = AugmentProfile.Owns(selectedAugment.Id);
+            equipped = selectedAugment == AugmentProfile.Equipped;
+            price = selectedAugment.Price;
+        }
+        else if (tab == Tab.Turrets)
         {
             owned = PlayerProfile.OwnsTurret(selectedTurret.Id);
             equipped = selectedTurret == PlayerProfile.EquippedTurret;
@@ -341,6 +435,11 @@ public class GarageUI : MonoBehaviour
             actionButton.interactable = canAfford;
             actionLabel.text = canAfford ? "BUY  " + price : "NEED " + price;
         }
+        else if (equipped && tab == Tab.Augments)
+        {
+            actionButton.interactable = true;   // an augment can be taken off again
+            actionLabel.text = "UNEQUIP";
+        }
         else if (equipped)
         {
             actionButton.interactable = false;
@@ -355,27 +454,52 @@ public class GarageUI : MonoBehaviour
 
     void OnAction()
     {
-        if (showingTurrets)
+        if (tab == Tab.Augments) ActOnAugment(selectedAugment);
+        else if (tab == Tab.Turrets) ActOnTurret(selectedTurret);
+        else ActOnHull(selectedHull);
+
+        RefreshAll();
+    }
+
+    void ActOnHull(HullBase h)
+    {
+        if (!PlayerProfile.OwnsHull(h.Id))
         {
-            TurretBase t = selectedTurret;
-            if (!PlayerProfile.OwnsTurret(t.Id))
-            {
-                if (PlayerProfile.TryBuyTurret(t)) { PlayerProfile.EquipTurret(t); messageText.text = "Bought and equipped " + t.DisplayName + "!"; }
-                else messageText.text = "Not enough coins.";
-            }
-            else if (PlayerProfile.EquipTurret(t)) messageText.text = "Equipped " + t.DisplayName + ".";
+            if (PlayerProfile.TryBuyHull(h)) { PlayerProfile.EquipHull(h); messageText.text = "Bought and equipped " + h.DisplayName + "!"; }
+            else messageText.text = "Not enough coins.";
+        }
+        else if (PlayerProfile.EquipHull(h)) messageText.text = "Equipped " + h.DisplayName + ".";
+    }
+
+    void ActOnTurret(TurretBase t)
+    {
+        if (!PlayerProfile.OwnsTurret(t.Id))
+        {
+            if (PlayerProfile.TryBuyTurret(t)) { PlayerProfile.EquipTurret(t); messageText.text = "Bought and equipped " + t.DisplayName + "!"; }
+            else messageText.text = "Not enough coins.";
+        }
+        else if (PlayerProfile.EquipTurret(t)) messageText.text = "Equipped " + t.DisplayName + ".";
+    }
+
+    // Only one augment can be equipped at a time: equipping another one replaces it
+    void ActOnAugment(AugmentBase a)
+    {
+        if (a == null) return;
+
+        if (!AugmentProfile.Owns(a.Id))
+        {
+            if (AugmentProfile.TryBuy(a)) { AugmentProfile.Equip(a); messageText.text = "Bought and equipped " + a.DisplayName + "!"; }
+            else messageText.text = "Not enough coins.";
+        }
+        else if (a == AugmentProfile.Equipped)
+        {
+            AugmentProfile.Equip(null);
+            messageText.text = a.DisplayName + " removed.";
         }
         else
         {
-            HullBase h = selectedHull;
-            if (!PlayerProfile.OwnsHull(h.Id))
-            {
-                if (PlayerProfile.TryBuyHull(h)) { PlayerProfile.EquipHull(h); messageText.text = "Bought and equipped " + h.DisplayName + "!"; }
-                else messageText.text = "Not enough coins.";
-            }
-            else if (PlayerProfile.EquipHull(h)) messageText.text = "Equipped " + h.DisplayName + ".";
+            AugmentProfile.Equip(a);
+            messageText.text = "Equipped " + a.DisplayName + ".";
         }
-
-        RefreshAll();
     }
 }

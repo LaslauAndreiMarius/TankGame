@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour, IFreezable
 {
     public static readonly List<EnemyAI> All = new List<EnemyAI>();   // every living enemy (used for spacing)
 
@@ -31,6 +31,8 @@ public class EnemyAI : MonoBehaviour
     public float separationRadius = 2f;      // enemies push apart when closer than this
     public float separationWeight = 0.8f;
     public bool drawPath = false;            // shows the route in the Scene / Game view (Gizmos must be on)
+
+    private bool frozen;   // set by augments such as Freeze
 
     private Transform player;
     private Rigidbody2D rb;
@@ -70,6 +72,12 @@ public class EnemyAI : MonoBehaviour
     void OnEnable()  { All.Add(this); }
     void OnDisable() { All.Remove(this); }
 
+    // A frozen enemy does not move, aim or shoot
+    public void SetFrozen(bool value)
+    {
+        frozen = value;
+    }
+
     void Start()
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
@@ -86,7 +94,7 @@ public class EnemyAI : MonoBehaviour
     // ------------------------------------------------------------------
     void Update()
     {
-        if (player == null) return;
+        if (frozen || player == null) return;
 
         Vector2 toPlayer = (Vector2)player.position - (Vector2)turret.position;
         float targetAngle = Mathf.Atan2(toPlayer.y, toPlayer.x) * Mathf.Rad2Deg - 90f;
@@ -120,9 +128,10 @@ public class EnemyAI : MonoBehaviour
     // ------------------------------------------------------------------
     void FixedUpdate()
     {
-        if (player == null)
+        if (player == null || frozen)
         {
             rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
             return;
         }
 

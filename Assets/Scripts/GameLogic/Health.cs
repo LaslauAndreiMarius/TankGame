@@ -30,6 +30,13 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    // Used by health packs (through HealthRegen). Never goes above the maximum.
+    public void Heal(int amount)
+    {
+        if (isDead || amount <= 0) return;
+        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
+    }
+
     public void TakeDamage(int amount)
     {
         if (isDead) return;   // two bullets in the same frame must not kill it twice

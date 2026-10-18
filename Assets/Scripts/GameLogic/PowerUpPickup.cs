@@ -103,6 +103,7 @@ public class PowerUpPickup : MonoBehaviour
 
         collected = true;
         receiver.Activate(type);
+        if (receiver.CompareTag("Player")) AugmentHooks.PowerUpCollected(type);   // augments may react to the player's pickups
 
         // The glow around the tank is added the first time that tank collects anything
         if (receiver.GetComponent<PowerUpAura>() == null)

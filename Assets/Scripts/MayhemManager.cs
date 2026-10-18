@@ -44,7 +44,7 @@ public class MayhemManager : MonoBehaviour
     public event Action<int> WaveStarted;          // wave number
     public event Action<int, int> WaveCleared;     // wave number, bonus coins
 
-    public int Wave { get; private set; }
+    public int Wave { get; private set; } // encapsulation
     public int WaveTotal { get; private set; }
     public Phase CurrentPhase { get; private set; }
     public float CountdownLeft { get; private set; }
