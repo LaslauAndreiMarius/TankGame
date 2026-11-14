@@ -1,104 +1,99 @@
 # Tank Arena
 
-A top-down 2D tank arena shooter built with **Unity 6** and **C#**, inspired by *Tanki Online*.
-Drive your tank, aim the turret with the mouse, survive waves of enemy tanks that hunt you down, and grab supply boxes for temporary power-ups.
+![Unity](https://img.shields.io/badge/Unity-6-black?logo=unity)
+![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)
+![Genre](https://img.shields.io/badge/genre-top--down%20shooter-orange)
+![Status](https://img.shields.io/badge/status-in%20development-blue)
 
-> University project · Work in progress · **Status: Week 1 demo**
+A top-down 2D tank shooter built from scratch in **Unity 6** and **C#**. Build your own tank from interchangeable hulls and turrets, survive endless waves of enemy tanks, and spend the coins you earn on permanent upgrades.
 
-[Main menu]
-![alt text](image-1.png)
+<!-- Add a gameplay GIF and 3-4 screenshots in a /docs folder, then uncomment:
+![Gameplay](docs/gameplay.gif)
+| Garage | Mayhem wave | Augments |
+|---|---|---|
+| ![Garage](docs/garage.png) | ![Mayhem](docs/mayhem.png) | ![Augments](docs/augments.png) |
+-->
 
 ---
 
-## Table of contents
+## Contents
 
-1. [Concept](#concept)
-2. [Week 1 progress report](#week-1-progress-report)
+1. [Highlights](#highlights)
+2. [Gameplay](#gameplay)
 3. [Controls](#controls)
-4. [Game mechanics](#game-mechanics)
-5. [Technical overview](#technical-overview)
-6. [Project structure](#project-structure)
-7. [Assets and credits](#assets-and-credits)
+4. [Technical deep dive](#technical-deep-dive)
+5. [Architecture](#architecture)
+6. [Tech stack](#tech-stack)
+7. [Project structure](#project-structure)
 8. [Getting started](#getting-started)
-9. [Roadmap](#roadmap)
-10. [Known limitations](#known-limitations)
+9. [Assets and credits](#assets-and-credits)
+10. [Roadmap and known limitations](#roadmap-and-known-limitations)
 11. [Author](#author)
 
 ---
 
-## Concept
+## Highlights
 
-*Tank Arena* is a fast arena shooter. You are alone in an enclosed map; enemy tanks keep spawning outside your view, chase you, and shoot back. Every enemy destroyed adds to your **kill count**. When you die the run ends and the map restarts from zero.
+What this project demonstrates:
 
-The gameplay ideas are borrowed from *Tanki Online*:
-
-- a tank made of two independent parts: a **hull** that drives and a **turret** that aims on its own
-- **supply boxes** that spawn on the map and give temporary bonuses
-- a **garage** for customizing the tank (hull, turret, color) *(planned)*
-- several **weapon types** *(planned)*
-
-The game is 2D instead of 3D, which keeps the scope realistic for one semester and lets the focus go to gameplay systems and polish.
+- **A\* pathfinding written from scratch:** grid-based search with a binary-heap open list, obstacle inflation by the tank's size, path smoothing, periodic re-planning and stuck recovery.
+- **Wave-based game mode with scaling difficulty:** enemies spawn around the player, and their hulls, turrets, numbers and rewards progress with the wave.
+- **Progression system with persistence:** a coin economy, 9 hulls, 9 turrets and 4 augments, saved between sessions.
+- **Extensible augment system:** special abilities built on abstract classes and interfaces, so a new augment is one new file and no changes to existing systems.
+- **Polymorphic part design:** every hull and turret is its own class deriving from a shared base, with different movement, firepower and bullet behaviors.
+- **Production-style UI:** a pixel-art UI kit with 9-slice sprites, animated menus, a health bar with a damage trail, cooldown indicators and screen effects.
+- **Custom editor tooling:** menu tools that generate maps and UI screens and wire every reference automatically, plus an in-game debug mode.
 
 ---
 
-## Week 1 progress report
+## Gameplay
 
-The original goal for week 1 was a barebones demo (driving, aiming, shooting, one target). That core is finished, and several systems planned for later weeks are already in place.
+You drive a tank in an enclosed arena. Enemy tanks hunt you, shoot back and fight for power-ups. Every enemy you destroy drops coins that you collect by driving over them. Between runs, you spend coins in the garage to build a stronger tank.
 
-### Status overview
+### Game modes
 
-| Area | Status |
+| Mode | Description |
 |---|---|
-| Player tank (hull movement, independent turret, shooting) | Done |
-| Health and damage system | Done |
-| Enemy tanks with AI (chase, keep distance, aim, shoot) | Done |
-| Off-screen enemy spawning | Done |
-| Power-up system (3 power-ups, collectible boxes) | Done |
-| Kill counter and death / restart flow | Done |
-| HUD (health bar, kills, power-up timers) | Done |
-| Main menu with map selection (maps are scenes) | Done |
-| Animations and visual effects | Done |
-| Sound system | Done (final sound effects still to be added) |
-| Garage (tank customization) | Placeholder screen only |
-| Additional weapons and maps | Planned |
+| **Classic** | A few enemies at a time, spawning out of sight. Survive, collect coins and upgrade. |
+| **Mayhem** | Endless waves close in from every side. Each wave brings more enemies using better hulls and turrets. Clearing a wave pays a coin bonus and drops a health pack. Your best wave is saved. |
 
-### What was built
+The mode is chosen in the menu before picking a map. Both modes share the same maps, coins and upgrades.
 
-**Core gameplay**
-- Tank driving with physics (forward/back and hull rotation), collisions with walls and obstacles
-- Turret that rotates independently and follows the mouse cursor
-- Shooting with a fire-rate cooldown; bullets with damage, lifetime and "who fired me" information so teams don't hurt themselves
-- Reusable health component used by the player and every enemy
-- Smooth camera that follows the player on a map bigger than the screen
+### Build your tank
 
-**Enemy AI**
-- Enemies turn their hull toward the player and drive after them
-- They hold a preferred distance: they stop at a comfortable range and **back away** if the player gets too close, so they never ram the player
-- The turret rotates separately from the hull at its own speed and only fires when it is actually pointing at the player and in range
-- Optional line-of-sight check so enemies don't shoot through walls
-- Enemies **deliberately collect power-ups** that are very close to them (details below)
+Hulls and turrets can be combined freely: **9 hulls × 9 turrets = 81 builds**.
 
-**Spawning**
-- Enemies spawn at random positions that are outside the camera view and not inside any obstacle, with limits for the maximum number of enemies and the spawn interval
-- Power-up boxes spawn randomly and far apart from each other
+- **Hulls** trade speed, turning rate and health, from the fast and fragile scout to the slow, heavily armored fortress.
+- **Turrets** differ in damage, fire rate, range and bullet type:
 
-**Power-ups** — three effects, 15 seconds each, usable by the player and by enemies (see [Game mechanics](#power-ups))
+| Bullet type | Behavior |
+|---|---|
+| Standard | A single shot, with variants such as rapid fire |
+| Scatter | A fan of pellets |
+| Burst | Several shots in quick succession |
+| Piercing | Passes through several targets |
+| Explosive | Area damage that falls off toward the edge |
+| Electric | A zone of full damage with crackling lightning arcs |
 
-**Interface**
-- Main menu with *Select Map*, *Garage* and *Exit*; each map is its own scene, so a new map is just a new scene and one button
-- Animated panel transitions, button hover / press effects with sounds, fade between scenes
-- In-game HUD: health bar (with a "damage trail"), kill counter, and one card per active power-up
-- Low-health warning (pulsing red screen edges) and a death screen showing the final kill count
+The garage previews your tank with the turret following the mouse, and shows stat bars with colored `+/-` differences against the part you currently use.
 
-**Visuals and audio**
-- Sprite-based tanks (separate hull and turret sprites) with animated tracks
-- Sprite-sheet animations for explosions and exhaust smoke
-- Tiled ground texture, textured walls and obstacles (crates, rocks, barrels, tank traps)
-- Pixel-art UI kit: panels, buttons in three states, bars and icons
-- Sound helper with distance-based volume; UI and power-up sounds
+### Augments
 
-**Tooling**
-- Custom Unity editor tools that build a complete map (ground, walls, obstacles) and the UI screens with one menu click, so new maps and layout changes take seconds
+Equip **one** special ability, bought with coins:
+
+| Augment | Effect |
+|---|---|
+| **Instant Regen** | Health packs heal you instantly instead of over several seconds |
+| **Long Boxes** | Power-ups last 30 seconds instead of 15 |
+| **Rapid Fire** | Press `E` to fire four times faster for a few seconds, with a glowing screen effect, then recharge |
+| **Freeze** | Press `E` to freeze every enemy on the map, with an icy effect on each tank, then recharge |
+
+Each augment has its own sound. A widget shows the equipped augment, with a cooldown sweep, a pulsing frame when it is ready and a ping when it recharges.
+
+### On the battlefield
+
+- **Power-up boxes:** double damage, double armor and double speed, each with its own icon and a timer card on the HUD. Tanks show a colored aura while an effect is active. Enemies deliberately go for nearby boxes.
+- **Health packs:** heal over a few seconds with a green screen glow. Classic packs restore a fixed share of your maximum health. In Mayhem, packs get stronger and faster with every wave.
 
 ---
 
@@ -106,118 +101,180 @@ The original goal for week 1 was a barebones demo (driving, aiming, shooting, on
 
 | Input | Action |
 |---|---|
-| `W` / `Up Arrow` | Drive forward |
-| `S` / `Down Arrow` | Drive backward |
-| `A` / `Left Arrow` | Rotate hull left |
-| `D` / `Right Arrow` | Rotate hull right |
+| `W` / `Up` | Drive forward |
+| `S` / `Down` | Drive backward |
+| `A` `D` / `Left` `Right` | Rotate the hull |
 | Mouse | Aim the turret |
 | Hold `Left Mouse Button` | Fire |
+| `E` | Use your augment |
+| `F2` | Debug panel (Unity editor and development builds only) |
 
 ---
 
-## Game mechanics
+## Technical deep dive
 
-### Tank movement
-The hull is a physics object (`Rigidbody2D`). Forward and backward input sets the velocity along the direction the tank is facing; left and right set its angular velocity. Because the movement goes through the physics engine, the tank stops correctly at walls instead of passing through them. The turret is a child object that rotates toward the mouse position in world space, independent of where the hull points.
+### Enemy behavior and pathfinding
 
-### Shooting and damage
-A single `Weapon` component is shared by the player and enemies. It enforces the fire rate and spawns a bullet prefab at the barrel tip. Bullets are trigger colliders: on contact they deal damage to anything with a `Health` component, spawn their hit effect and disappear. Each bullet remembers the tag of its shooter and ignores that team.
+Enemies are driven by a small decision cascade each physics frame:
 
-### Health and death
-Every tank has a `Health` component. When health reaches zero the tank plays an explosion effect and sound, then is destroyed. If it was an enemy, a kill is added to the score; if it was the player, the game-over flow starts.
+1. A nearby **power-up box**: go for it (skipped if the effect is already active, or if the player is on top of them).
+2. A wall between the enemy and the player: **follow a path** around it.
+3. A clear view of the player: keep a **preferred distance** (approach, stand still, or back away so enemies never ram you).
 
-### Enemy AI
-Each physics frame an enemy compares its distance to the player with two thresholds:
+The hull (physics, `FixedUpdate`) and the turret (visual, `Update`) are controlled independently. The turret turns at its own speed and only fires when it points at the target, is within range and has a clear shot, which is checked with a raycast against solid obstacles only.
 
-| Distance to player | Behavior |
-|---|---|
-| Farther than the preferred distance | Drive toward the player |
-| Between the two thresholds | Stand still |
-| Closer than the "too close" distance | Reverse away while still facing the player |
+**Pathfinding** (`PathGrid`):
 
-The gap between the two thresholds prevents jittering back and forth. The turret is handled separately: it rotates toward the player at its own speed and fires only when the angle error is small and the target is in range. This makes enemies fair and dodgeable.
+- The map is converted into a grid of 0.5-unit cells. Every obstacle is **inflated by the tank's radius**, so any path that avoids blocked cells leaves room for the tank.
+- **A\*** with 8-direction movement, an octile-distance heuristic, no corner cutting, and a hand-written **binary min-heap** for the open list. The search reuses its working arrays through a stamp trick, so a search allocates nothing.
+- The raw grid path is **smoothed** by skipping every waypoint that can be reached in a straight, clear line.
+- Enemies re-plan periodically (with random offsets so they don't all search in the same frame), cut corners while following, spread apart with a separation force, and **recover from being stuck** by reversing and re-planning.
+- The grid is checked for connectivity against the generated map layouts, so no walkable area is cut off.
 
-### Enemy spawning
-The spawner picks random points on the map and rejects any point that is visible on screen (checked with viewport coordinates) or overlaps a collider. It keeps trying until it finds a valid point, and respects a maximum enemy count so a new enemy appears soon after one is destroyed.
+### Mayhem: wave system
 
-### Power-ups
+- Enemies spawn on a ring around the player, on walkable cells outside the camera view, with a short flash before they appear.
+- Wave `n` brings `6 + 2(n-1)` enemies, with more allowed alive at once and a faster spawn rate.
+- **Difficulty progression:** the parts list is ordered by price. Each enemy rolls a hull and a turret around the current "level" (`(wave-1) × 0.8`), so wave 1 is almost only starter tanks and wave 12 is mostly the top tier. After that, enemies keep scaling in health and damage.
+- Enemies are built at runtime from the same hull and turret classes as the player, with tuned strength multipliers. Rewards scale with the tier of the enemy.
 
-| Box | Icon | Effect (15 s) |
-|---|---|---|
-| Red | Starburst | **Double damage**: bullets deal twice the damage |
-| Blue | Shield | **Double armor**: incoming damage is halved (equivalent to doubled health) |
-| Yellow | Lightning bolt | **Double speed**: movement speed is doubled |
+### Garage and progression
 
-- Collect a box by driving into it. Boxes bob, glow and blink shortly before they disappear.
-- Collecting the same type again **refreshes** the timer to 15 s; different types run **at the same time**.
-- A colored aura appears under any tank with an active effect, enemies included.
-- Boxes spawn **sparsely**: a minimum distance between boxes, a minimum distance from the player, a maximum count at once, and a lifetime.
-- **Enemies can collect them too, and do so intentionally**, but only with some common sense: the box must be within a short radius, the enemy ignores a box if it already has that effect with time left, and it won't leave the fight while the player is right next to it. While driving to a box its turret keeps aiming and shooting at the player.
+- `HullBase` and `TurretBase` are abstract `ScriptableObject` classes; every part is its own subclass that overrides only its own numbers. Turrets can also override `Fire()` for special behavior.
+- A static `TankCatalog` loads all parts, orders them by price and computes the maximum of each stat for the garage's bars.
+- `PlayerProfile` and `AugmentProfile` store coins, owned parts and the equipped build as JSON in `PlayerPrefs`, and raise events when anything changes so the UI refreshes itself.
+- `TankLoadout` dresses the player in the equipped parts when a map starts and applies their stats. `EnemyLoadout` does the same for enemies.
 
-Implementation note: every tank (player or enemy) has a `PowerUpReceiver` that remembers when each effect ends and sets multipliers on the weapon, health and movement scripts. The same code therefore works for both.
+### Augment system
 
-### Score and game flow
-The score is the **kill count**. It starts at 0 whenever a map loads. When the player dies, a "YOU DIED" screen shows the final kills and, after a few seconds, the map reloads, which resets everything including the counter.
+Augments are split into **data** and **behavior**, and the rest of the game talks to them only through interfaces:
 
-### Maps
-Each map is a separate Unity scene (the menu is one too), so adding a map means duplicating a scene and adding a menu button. A custom editor tool places the ground, outer walls and a symmetric layout of obstacles (bunkers, crate clusters, tank-trap lines, rocks, barrel groups) and can be re-run after tweaking the layout.
+```mermaid
+classDiagram
+    class AugmentBase {
+        <<abstract>>
+        +Id
+        +DisplayName
+        +Price
+        +CreateAbility()
+    }
+    class AugmentAbility {
+        <<abstract>>
+        +Initialize()
+        +Tick()
+        +Shutdown()
+    }
+    class TimedAbility {
+        <<abstract>>
+        +Duration
+        +Cooldown
+        #OnActivated()
+        #OnEnded()
+    }
+    class IActivatable {
+        <<interface>>
+    }
+    class IScreenEffect {
+        <<interface>>
+    }
+    AugmentBase --> AugmentAbility : creates
+    AugmentAbility <|-- TimedAbility
+    TimedAbility ..|> IActivatable
+    TimedAbility <|-- RapidFireAbility
+    TimedAbility <|-- FreezeAbility
+    AugmentAbility <|-- InstantRegenAbility
+    AugmentAbility <|-- LongBoxesAbility
+    RapidFireAbility ..|> IScreenEffect
+    FreezeAbility ..|> IScreenEffect
+```
+
+- `TimedAbility` implements the whole *ready → active → cooling down → ready* cycle, the key handling and the sounds. A subclass only states its duration, cooldown and what it does.
+- Optional interfaces let an augment plug into systems without those systems knowing about it: `IScreenEffect` (the HUD draws its glow), `IHealthPackModifier`, `IPowerUpListener` and `IFreezable` (implemented by enemy tanks).
+- Existing systems call one-line `AugmentHooks`, never a specific augment.
+
+Adding a new augment means writing one file:
+
+```csharp
+public class AugmentShield : AugmentBase
+{
+    public override string Id => "Shield";
+    public override string DisplayName => "Shield";
+    public override string CardName => "SHIELD";
+    public override string Description => "Press E to take no damage for 4 seconds.";
+    public override string Details => "TYPE: PRESS E";
+    public override int Price => 1800;
+    public override AugmentAbility CreateAbility() { return new ShieldAbility(); }
+}
+
+public class ShieldAbility : TimedAbility
+{
+    protected override float Duration { get { return 4f; } }
+    protected override float Cooldown { get { return 60f; } }
+    protected override void OnActivated() { /* make the player immune */ }
+    protected override void OnEnded() { /* undo it */ }
+}
+```
+
+The garage tab, HUD widget, sounds and key handling pick it up automatically.
+
+### Combat
+
+A shared `Weapon` component serves the player and every enemy. A turret decides *how* it fires (single shot, pellet fan, burst), and a `Bullet` decides what happens on impact (damage one target, pierce several, explode in a radius with distance falloff, or electrify an area). Bullets carry the tag of their shooter, so teams never hurt themselves. Power-ups and augments change shooting through multipliers on the weapon, not by editing it.
+
+### UI and game feel
+
+- A pixel-art UI kit with **9-slice sprites**, rendered at an integer pixel scale so borders stay crisp at any resolution.
+- Animated menu panels (fade and slide with `CanvasGroup`), scene fades, and buttons that grow on hover, press down on click and play sounds.
+- HUD: a health bar with a **damage trail** and colour that changes with health, a pulsing red edge warning at low health, a kill counter that pops on every kill, power-up timer cards, a wave display with banners, and a death screen.
+- Effects built in code (glows, rings, lightning arcs, frost) so they need no image files. Time-independent UI uses unscaled time.
+
+### Editor tooling and debug mode
+
+- **Editor tools** generate a complete map (ground, walls and a mirrored obstacle layout) and build the menu, HUD, garage, wave display and augment widget with every inspector reference wired up, so a new map or a redesigned screen takes seconds. Each tool is safe to run again.
+- **Debug mode (`F2`)** gives a test panel for coins, health, power-ups, augments, hulls and turrets, enemy spawning, wave skipping and game speed. Click an enemy to see the route it is following drawn in the game view, toggle path tracking, view the navigation grid, and drag any tank to a new place. It exists only in the editor and in development builds.
 
 ---
 
-## Technical overview
+## Architecture
 
-### Tech stack
+```mermaid
+flowchart LR
+    Garage["Garage UI"] -->|buy and equip| Profile["PlayerProfile / AugmentProfile"]
+    Profile -->|JSON| Prefs[("PlayerPrefs")]
+    Catalog["TankCatalog (hulls and turrets)"] --> Garage
+    Profile --> Loadout["TankLoadout"]
+    Catalog --> Loadout
+    Loadout --> Player["Player tank"]
+    Catalog --> Mayhem["MayhemManager"]
+    Mayhem --> EnemyLoadout["EnemyLoadout"]
+    EnemyLoadout --> Enemies["Enemy tanks"]
+    Controller["AugmentController"] --> Player
+    Hooks["AugmentHooks"] --> Controller
+    Packs["Power-ups and health packs"] --> Hooks
+    PathGrid["PathGrid (A*)"] --> Enemies
+```
+
+Principles used throughout:
+
+- **Small, single-purpose components** combined on prefabs, with shared ones (`Weapon`, `Health`, `PowerUpReceiver`) used by both player and enemies.
+- **Inheritance and interfaces** where behavior varies (parts, augments, freezable objects) and **composition** where it doesn't.
+- **Events** for UI refresh instead of polling, and **static registries** for lookups such as "all enemies" or "all pickups".
+- **Coroutines** for timed sequences, and `FixedUpdate` for physics, `Update` for input and visuals.
+
+---
+
+## Tech stack
 
 | | |
 |---|---|
-| Engine | Unity 6 (2D project) |
+| Engine | Unity 6 (2D) |
 | Language | C# |
-| Input | Unity Input System package |
-| UI | Unity UI (uGUI) and TextMeshPro, 9-slice sprites, Canvas Scaler (1920 × 1080 reference) |
+| Input | Unity Input System |
+| UI | uGUI, TextMeshPro, 9-slice sprites, Canvas Scaler (1920 × 1080) |
 | Animation | Animator controllers and sprite-sheet clips |
-| Physics | Rigidbody2D, Collider2D, triggers |
+| Physics | Rigidbody2D, Collider2D, triggers, raycasts |
+| Persistence | `PlayerPrefs` with `JsonUtility` |
 | Version control | Git |
-
-### Main scripts
-
-| Script | Responsibility |
-|---|---|
-| `TankMovement`, `TurretAim`, `PlayerShooting` | Player input: driving, aiming, firing |
-| `Weapon`, `Bullet` | Shared shooting logic and projectile behavior |
-| `Health` | Damage, armor multiplier, death |
-| `EnemyAI` | Chasing, distance keeping, turret aiming, power-up seeking |
-| `EnemySpawner` | Off-screen enemy spawning |
-| `CameraFollow` | Smooth follow camera |
-| `PowerUpReceiver` | Active effects and their multipliers on a tank |
-| `PowerUpPickup`, `PowerUpSpawner` | Collectible boxes and their sparse spawning |
-| `PowerUpAura`, `PickupBurst`, `GlowSprite`, `PowerUpStyle` | Power-up visuals |
-| `GameManager` | Kill counter, death screen, restart |
-| `HealthBarUI`, `PowerUpHUD`, `UIPunch` | HUD elements |
-| `MainMenu`, `UIButtonEffects` | Menu navigation, transitions, button effects |
-| `OneShotEffect`, `ExhaustSmoke`, `TrackAnimationControl` | Effects and animation control |
-| `Sfx` | Sound playback with distance-based volume |
-| Editor: `MapGenerator`, `UIBuilder`, `PowerUpBuilder` | Tools that build maps and UI screens |
-
-### Concepts and techniques used
-
-- Component-based design: small single-purpose scripts that are combined on prefabs, with `Weapon`, `Health` and `PowerUpReceiver` shared between player and enemies
-- Prefabs and runtime `Instantiate` for bullets, enemies, boxes and effects
-- `FixedUpdate` for physics movement, `Update` for input and visuals, `LateUpdate` for the camera
-- Singleton (`GameManager`) and shared static lists (all power-up boxes in the world) for loose coupling between systems
-- Coroutines for timed sequences (death screen, fades, scene transitions)
-- Unscaled time for UI so effects keep running when the game is frozen
-- Simple behavior logic with distance thresholds for the AI, angle-based turret control, and `Mathf.MoveTowardsAngle` for smooth rotation
-- Viewport-space checks for off-screen spawning; `OverlapCircle` to avoid spawning inside walls
-- Unity Events wired to buttons, 9-slice UI sprites, CanvasGroup fades
-- Custom editor scripting (`MenuItem`, asset importers, prefab editing) to automate content creation
-
-### Challenges solved
-
-- **Sprites face a different direction than the code expects.** The tank art faces right while the movement code treats "up" as forward. The art lives on rotated child objects, so no gameplay code had to change.
-- **Independent hull and turret for enemies.** Hull movement (physics, `FixedUpdate`) and turret aiming (visual, `Update`) are handled separately, which also lets enemies shoot while driving to a power-up.
-- **Power-ups without duplicating code.** A multiplier-based receiver means damage, armor and speed bonuses work identically for the player and for enemies.
-- **Switching to the new Input System.** All input code uses the current Input System API instead of the legacy `Input` class.
-- **Pixel-art rendering.** Point filtering, full-rect sprite meshes and a fixed pixel scale keep tiled textures and UI borders crisp.
 
 ---
 
@@ -225,66 +282,73 @@ Each map is a separate Unity scene (the menu is one too), so adding a map means 
 
 ```
 Assets/
-├── Scripts/        Gameplay, AI, UI and effects scripts
-├── Editor/         Editor tools (map generator, UI builders)
-├── Scenes/         MainMenu, Map_01, ...
-├── Prefabs/        Player, Enemy, Bullet, PowerUpBox, effects
-├── Textures/       Tanks, map, UI and pickup textures
-├── Animations/     Animator controllers and clips
-└── Audio/          Sound effects
+├── Scripts/
+│   ├── Player/        Movement, aiming, shooting, loadout
+│   ├── Enemy/         Enemy behavior, pathfinding (PathGrid), spawning, Mayhem waves
+│   ├── Parts/         Hull and turret base classes and one class per part
+│   ├── Augments/      Augment base classes, interfaces and the four augments
+│   ├── Pickups/       Power-ups, health packs, coins
+│   ├── UI/            Menu, garage, HUD, effects
+│   └── Core/          Game manager, profiles, catalog, sound helper
+├── Editor/            Map generator, UI builders, setup tools
+├── Resources/         Hull, turret and augment assets, coin prefab
+├── Scenes/            MainMenu and the maps
+├── Prefabs/           Player, enemy, bullet, pickups, effects
+├── Textures/          Tanks, map, UI and pickup images
+└── Audio/             Sound effects
 ```
+
+---
+
+## Getting started
+
+**Requirements:** Unity 6 with the 2D module, plus the Input System and TextMeshPro packages.
+
+1. Clone the repository and open the folder in Unity Hub.
+2. Open `Assets/Scenes/MainMenu` and press **Play**.
+3. In the menu, pick a mode (Classic or Mayhem) and a map.
+
+To try everything quickly, press `F2` in a map for the debug panel (editor and development builds only). Coins, parts and augments can be unlocked from there.
 
 ---
 
 ## Assets and credits
 
 **Third-party assets**
-- Tank sprites, animations and effect sprite sheets: *Tanks & Turrets* by *Lootzfir* — *(https://assetstore.unity.com/packages/2d/tanks-turrets-free-216890)* — *License: Standard Unity Asset Store EULA*
-- Pixel font *Thaleah Fat* by *Rick Hoppmann* — *(https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059)* — *License: Standard Unity Asset Store EULA*
 
-**Project assets**
-- UI kit (panels, buttons, bars, icons), menu background, map textures (walls, crates, rocks, barrels, tank traps), power-up box artwork, and placeholder UI / pickup sounds were created for this project.
+- Tank sprites and effect sprite sheets: *[asset pack name]* by *[author]* — *[link]* — *[license]*
+- Ground texture: *[source / link / license]*
+- Pixel font *Thaleah Fat* by Rick Hoppmann — *[link]* — see the license included with the font
 
-**Inspiration**
-- *Tanki Online* — only gameplay ideas were borrowed. No assets, names or code from the original game are used.
+**Created for this project**
 
----
-
-## Getting started
-
-**Requirements:** Unity 6 with the 2D module, plus the Input System and TextMeshPro packages (TextMeshPro essentials imported).
-
-1. Clone the repository and open the folder with Unity Hub.
-2. Open the scene `Assets/Scenes/MainMenu`.
-3. Press **Play**, choose *Select Map* and then a map.
-
-Make sure the scenes are listed under **File > Build Profiles > Scene List**, with `MainMenu` first.
+- The pixel-art UI kit, menu background, map textures (walls, crates, rocks, barrels, tank traps), power-up and health-pack box art, augment icons, bullet and coin sprites, and the sound effects.
 
 ---
 
-## Roadmap
+## Roadmap and known limitations
 
-- [x] **Week 1** — Core gameplay, enemy AI, power-ups, HUD, menu, visuals
-- [ ] **Garage** — choose hull, turret and color; save the selection between sessions
-- [ ] **Weapon variety** — rapid fire, shotgun, rocket and other projectile types, each with its own bullet and effects
-- [ ] **Enemy pathfinding** — navigate around walls instead of driving straight at the player
-- [ ] **Game-over screen** — Restart and Main Menu buttons instead of the automatic reload
-- [ ] **More maps** — new scenes with different layouts
-- [ ] **Audio pass** — final sound effects and background music
-- [ ] **Difficulty scaling** — enemy count and strength grow over time
-- [ ] **Polish and release** — bug fixing, balancing, standalone build, gameplay video, itch.io page
+- [x] Core combat, health and coins
+- [x] Enemy behavior with A* pathfinding
+- [x] Garage with hulls, turrets and augments
+- [x] Classic and Mayhem modes
+- [x] Power-ups, health packs and special abilities
+- [x] Pixel-art UI, effects, sound and debug tooling
+- [ ] **Skins** for hulls and turrets
+- [ ] **Data-driven parts:** move hull and turret numbers into data files so new parts need no code
+- [ ] Boss waves and more augments
+- [ ] More maps and difficulty options
+- [ ] Pause and settings menus, final sound effects and music
 
----
+Known limitations:
 
-## Known limitations
-
-- Enemies steer straight toward the player and do not avoid walls, so long walls can trap them. The first map uses small, spread-out obstacles to work around this until pathfinding is added.
-- The Garage screen is a placeholder.
-- Sound effects are placeholders and will be replaced in the audio pass.
+- Mayhem enemies reuse the player's hull artwork with a red tint, until colored skins exist.
+- Sound effects are placeholders.
+- Balance values are tuned by hand and still being adjusted.
 
 ---
 
 ## Author
 
-**Lăslău Andrei-Marius** — Fundamental concepts of programming languages — Facultatea de Automatică și Calculatoare, Timișoara, Year 3
-Supervisor: Paiusan Razvan
+**Lăslău Andrei-Marius**
+Fundamental concepts of programming languages — Facultatea de Automatică și Calculatoare, Timișoara, Year 3 
