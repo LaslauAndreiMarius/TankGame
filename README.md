@@ -1,11 +1,18 @@
 # Tank Arena
 
+[![Play on itch.io](https://img.shields.io/badge/play%20on-itch.io-fa5c5c?logo=itch.io&logoColor=white)](https://YOUR-USERNAME.itch.io/GAME-NAME)
 ![Unity](https://img.shields.io/badge/Unity-6-black?logo=unity)
 ![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)
 ![Genre](https://img.shields.io/badge/genre-top--down%20shooter-orange)
-![Status](https://img.shields.io/badge/status-in%20development-blue)
+![Status](https://img.shields.io/badge/status-complete-brightgreen)
 
 A top-down 2D tank shooter built from scratch in **Unity 6** and **C#**. Build your own tank from interchangeable hulls and turrets, survive endless waves of enemy tanks, and spend the coins you earn on permanent upgrades.
+
+## ▶ Play the game
+
+**Play it for free on itch.io: [YOUR-USERNAME.itch.io/GAME-NAME](https://YOUR-USERNAME.itch.io/GAME-NAME)**
+
+No installation is needed to try it. Your coins, parts and augments are saved between sessions. To explore the code or build it yourself, see [Getting started](#getting-started).
 
 <!-- Add a gameplay GIF and 3-4 screenshots in a /docs folder, then uncomment:
 ![Gameplay](docs/gameplay.gif)
@@ -13,6 +20,8 @@ A top-down 2D tank shooter built from scratch in **Unity 6** and **C#**. Build y
 |---|---|---|
 | ![Garage](docs/garage.png) | ![Mayhem](docs/mayhem.png) | ![Augments](docs/augments.png) |
 -->
+
+> Developed as a university project over one semester. All gameplay systems, tools and UI were implemented in C#.
 
 ---
 
@@ -27,7 +36,7 @@ A top-down 2D tank shooter built from scratch in **Unity 6** and **C#**. Build y
 7. [Project structure](#project-structure)
 8. [Getting started](#getting-started)
 9. [Assets and credits](#assets-and-credits)
-10. [Roadmap and known limitations](#roadmap-and-known-limitations)
+10. [Limitations and future ideas](#limitations-and-future-ideas)
 11. [Author](#author)
 
 ---
@@ -107,7 +116,8 @@ Each augment has its own sound. A widget shows the equipped augment, with a cool
 | Mouse | Aim the turret |
 | Hold `Left Mouse Button` | Fire |
 | `E` | Use your augment |
-| `F2` | Debug panel (Unity editor and development builds only) |
+
+In the browser, click inside the game once so it receives keyboard input.
 
 ---
 
@@ -129,7 +139,7 @@ The hull (physics, `FixedUpdate`) and the turret (visual, `Update`) are controll
 - **A\*** with 8-direction movement, an octile-distance heuristic, no corner cutting, and a hand-written **binary min-heap** for the open list. The search reuses its working arrays through a stamp trick, so a search allocates nothing.
 - The raw grid path is **smoothed** by skipping every waypoint that can be reached in a straight, clear line.
 - Enemies re-plan periodically (with random offsets so they don't all search in the same frame), cut corners while following, spread apart with a separation force, and **recover from being stuck** by reversing and re-planning.
-- The grid is checked for connectivity against the generated map layouts, so no walkable area is cut off.
+- The grid was checked for connectivity against the generated map layouts, so no walkable area is cut off.
 
 ### Mayhem: wave system
 
@@ -225,13 +235,13 @@ A shared `Weapon` component serves the player and every enemy. A turret decides 
 
 - A pixel-art UI kit with **9-slice sprites**, rendered at an integer pixel scale so borders stay crisp at any resolution.
 - Animated menu panels (fade and slide with `CanvasGroup`), scene fades, and buttons that grow on hover, press down on click and play sounds.
-- HUD: a health bar with a **damage trail** and colour that changes with health, a pulsing red edge warning at low health, a kill counter that pops on every kill, power-up timer cards, a wave display with banners, and a death screen.
+- HUD: a health bar with a **damage trail** and color that changes with health, a pulsing red edge warning at low health, a kill counter that pops on every kill, power-up timer cards, a wave display with banners, and a death screen.
 - Effects built in code (glows, rings, lightning arcs, frost) so they need no image files. Time-independent UI uses unscaled time.
 
 ### Editor tooling and debug mode
 
 - **Editor tools** generate a complete map (ground, walls and a mirrored obstacle layout) and build the menu, HUD, garage, wave display and augment widget with every inspector reference wired up, so a new map or a redesigned screen takes seconds. Each tool is safe to run again.
-- **Debug mode (`F2`)** gives a test panel for coins, health, power-ups, augments, hulls and turrets, enemy spawning, wave skipping and game speed. Click an enemy to see the route it is following drawn in the game view, toggle path tracking, view the navigation grid, and drag any tank to a new place. It exists only in the editor and in development builds.
+- **Debug mode (`F2`)** gives a test panel for coins, health, power-ups, augments, hulls and turrets, enemy spawning, wave skipping and game speed. Click an enemy to see the route it is following drawn in the game view, toggle path tracking, view the navigation grid, and drag any tank to a new place. It exists only in the Unity editor and in development builds, so it is not part of the released game.
 
 ---
 
@@ -302,13 +312,17 @@ Assets/
 
 ## Getting started
 
-**Requirements:** Unity 6 with the 2D module, plus the Input System and TextMeshPro packages.
+**To play:** open the [itch.io page](https://YOUR-USERNAME.itch.io/GAME-NAME).
+
+**To run it from source:**
+
+*Requirements:* Unity 6 with the 2D module, plus the Input System and TextMeshPro packages.
 
 1. Clone the repository and open the folder in Unity Hub.
 2. Open `Assets/Scenes/MainMenu` and press **Play**.
 3. In the menu, pick a mode (Classic or Mayhem) and a map.
 
-To try everything quickly, press `F2` in a map for the debug panel (editor and development builds only). Coins, parts and augments can be unlocked from there.
+Press `F2` in a map (editor only) for the debug panel, where coins, parts and augments can be unlocked to try everything quickly.
 
 ---
 
@@ -326,29 +340,24 @@ To try everything quickly, press `F2` in a map for the debug panel (editor and d
 
 ---
 
-## Roadmap and known limitations
-
-- [x] Core combat, health and coins
-- [x] Enemy behavior with A* pathfinding
-- [x] Garage with hulls, turrets and augments
-- [x] Classic and Mayhem modes
-- [x] Power-ups, health packs and special abilities
-- [x] Pixel-art UI, effects, sound and debug tooling
-- [ ] **Skins** for hulls and turrets
-- [ ] **Data-driven parts:** move hull and turret numbers into data files so new parts need no code
-- [ ] Boss waves and more augments
-- [ ] More maps and difficulty options
-- [ ] Pause and settings menus, final sound effects and music
+## Limitations and future ideas
 
 Known limitations:
 
-- Mayhem enemies reuse the player's hull artwork with a red tint, until colored skins exist.
-- Sound effects are placeholders.
-- Balance values are tuned by hand and still being adjusted.
+- Mayhem enemies reuse the player's hull artwork with a red tint.
+- Sound effects are simple placeholders, and there is no background music.
+- Balance values were tuned by hand and could use more playtesting.
+
+Ideas for future versions:
+
+- Colored skins for hulls and turrets
+- Moving hull and turret numbers into data files, so new parts need no code
+- Boss waves and more augments
+- More maps, difficulty options, and pause and settings menus
 
 ---
 
 ## Author
 
-**Lăslău Andrei-Marius**
-Fundamental concepts of programming languages — Facultatea de Automatică și Calculatoare, Timișoara, Year 3 
+**[Your name]**
+[Course / university, year] · [Email or LinkedIn] · [Portfolio link]
