@@ -14,9 +14,10 @@ A top-down 2D tank shooter built from scratch in **Unity 6** and **C#**. Build y
 
 No installation is needed to try it. Your coins, parts and augments are saved between sessions. To explore the code or build it yourself, see [Getting started](#getting-started).
 
+<img width="1920" height="1080" alt="Screenshot 2026-11-14 190011" src="https://github.com/user-attachments/assets/b7e6ecf1-47da-489c-b15c-d2ce8c2d7bf0" />
 <img width="1920" height="1080" alt="Screenshot 2026-11-14 185945" src="https://github.com/user-attachments/assets/ec0cdefb-a519-4e2b-bc5b-195081988142" /><img width="1920" height="1080" alt="Screenshot 2026-11-14 190233" src="https://github.com/user-attachments/assets/63de36ce-c5c3-4ea3-9e5b-20c1fd52aed7" />
 <img width="1917" height="1078" alt="Screenshot 2026-11-14 190213" src="https://github.com/user-attachments/assets/0e8749c2-3e88-4133-be6e-bab92e80eadd" />
-<img width="1920" height="1080" alt="Screenshot 2026-11-14 190011" src="https://github.com/user-attachments/assets/b7e6ecf1-47da-489c-b15c-d2ce8c2d7bf0" />
+
 
 > Developed as a university project over one semester. All gameplay systems, tools and UI were implemented in C#.
 
@@ -349,6 +350,5 @@ Ideas for future versions:
 ---
 
 ## Author
-
-**[Your name]**
-[Course / university, year] · [Email or LinkedIn] · [Portfolio link]
+**Lăslău Andrei-Marius**
+Fundamental concepts of programming languages — Facultatea de Automatică și Calculatoare, Timișoara, Year 3 
