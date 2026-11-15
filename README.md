@@ -1,6 +1,6 @@
 # Tank Arena
 
-[![Play on itch.io](https://img.shields.io/badge/play%20on-itch.io-fa5c5c?logo=itch.io&logoColor=white)](https://YOUR-USERNAME.itch.io/GAME-NAME)
+[![Play on itch.io](https://img.shields.io/badge/play%20on-itch.io-fa5c5c?logo=itch.io&logoColor=white)](https://andreimariusxd.itch.io/tank-arena)
 ![Unity](https://img.shields.io/badge/Unity-6-black?logo=unity)
 ![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=white)
 ![Genre](https://img.shields.io/badge/genre-top--down%20shooter-orange)
@@ -10,16 +10,13 @@ A top-down 2D tank shooter built from scratch in **Unity 6** and **C#**. Build y
 
 ## ▶ Play the game
 
-**Play it for free on itch.io: [YOUR-USERNAME.itch.io/GAME-NAME](https://YOUR-USERNAME.itch.io/GAME-NAME)**
+**Play it for free on itch.io: [ANDREIMARIUSXD.itch.io/TANK-ARENA](https://andreimariusxd.itch.io/tank-arena)**
 
 No installation is needed to try it. Your coins, parts and augments are saved between sessions. To explore the code or build it yourself, see [Getting started](#getting-started).
 
-<!-- Add a gameplay GIF and 3-4 screenshots in a /docs folder, then uncomment:
-![Gameplay](docs/gameplay.gif)
-| Garage | Mayhem wave | Augments |
-|---|---|---|
-| ![Garage](docs/garage.png) | ![Mayhem](docs/mayhem.png) | ![Augments](docs/augments.png) |
--->
+<img width="1920" height="1080" alt="Screenshot 2026-11-14 185945" src="https://github.com/user-attachments/assets/ec0cdefb-a519-4e2b-bc5b-195081988142" /><img width="1920" height="1080" alt="Screenshot 2026-11-14 190233" src="https://github.com/user-attachments/assets/63de36ce-c5c3-4ea3-9e5b-20c1fd52aed7" />
+<img width="1917" height="1078" alt="Screenshot 2026-11-14 190213" src="https://github.com/user-attachments/assets/0e8749c2-3e88-4133-be6e-bab92e80eadd" />
+<img width="1920" height="1080" alt="Screenshot 2026-11-14 190011" src="https://github.com/user-attachments/assets/b7e6ecf1-47da-489c-b15c-d2ce8c2d7bf0" />
 
 > Developed as a university project over one semester. All gameplay systems, tools and UI were implemented in C#.
 
@@ -330,13 +327,7 @@ Press `F2` in a map (editor only) for the debug panel, where coins, parts and au
 
 **Third-party assets**
 
-- Tank sprites and effect sprite sheets: *[asset pack name]* by *[author]* — *[link]* — *[license]*
-- Ground texture: *[source / link / license]*
-- Pixel font *Thaleah Fat* by Rick Hoppmann — *[link]* — see the license included with the font
-
-**Created for this project**
-
-- The pixel-art UI kit, menu background, map textures (walls, crates, rocks, barrels, tank traps), power-up and health-pack box art, augment icons, bullet and coin sprites, and the sound effects.
+- Tank sprites, animations and effect sprite sheets:  Tanks & Turrets by  Lootzfir : (https://assetstore.unity.com/packages/2d/tanks-turrets-free-216890) - License: Standard Unity Asset Store EULA
 
 ---
 
