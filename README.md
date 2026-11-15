@@ -310,7 +310,7 @@ Assets/
 
 ## Getting started
 
-**To play:** open the [itch.io page](https://YOUR-USERNAME.itch.io/GAME-NAME).
+**To play:** open the [itch.io page](https://andreimariusxd.itch.io/tank-arena).
 
 **To run it from source:**
 
